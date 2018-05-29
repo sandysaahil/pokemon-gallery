@@ -1,0 +1,20 @@
+.bgimage {
+  width:100%;
+  height: 420px;
+  background: url('src/assets/images/hero-background.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size:cover;
+  margin-top: -100px;
+}
+.bgimage h1 {
+  color:white;
+  text-shadow:2px 2px #333;
+  padding: 50px;
+  padding-top: 170px;
+}
+
+#header-img {
+  width: 100%;
+  height: auto;
+}
