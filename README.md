@@ -1,27 +1,21 @@
-# PokemonGallery
+# Pokemon Gallery
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.1.
+## Play with it
+Application is hosted at http://pokemon-gallery.s3-website-ap-southeast-2.amazonaws.com/ 
 
-## Development server
+## Running Locally
+
+Make sure that node and npm are installed.
+
+run `npm install -g @angular/cli` to install AngularCLI
+
+run `run npm install` to install dependencies.
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Code scaffolding
+## Troubleshooting
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+If you get following error
+`Port 4200 is already in use. Use '--port' to specify a different port.`
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+then run `ng serve --port 4300` and navigate to `http://localhost:4300/`.

@@ -10,8 +10,8 @@ import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 })
 export class GalleryComponent implements OnInit {
 
-  private _data = new BehaviorSubject<Pokemon[]>([]);
-  private pokemons: Pokemon[];
+  public _data = new BehaviorSubject<Pokemon[]>([]);
+  public pokemons: Pokemon[];
 
   @Input() private searchText: string;
 
@@ -23,8 +23,8 @@ export class GalleryComponent implements OnInit {
   get pokemonList() {
     return this._data.getValue();
   }
-  private pager: any = {};
-  private pagedItems: Pokemon[];
+  public pager: any = {};
+  public pagedItems: Pokemon[];
 
 
   constructor(private paginationService: PaginationService) {

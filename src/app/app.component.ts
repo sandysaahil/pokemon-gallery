@@ -10,9 +10,9 @@ import {Pokemon} from './shared/pokemon';
 })
 export class AppComponent implements OnInit {
   public spinkit = Spinkit; // used by loading icon.
-  private pokemonList: Pokemon[] = [];
-  private filteredPokemonList: Pokemon[] = this.pokemonList;
-  private searchString = '';
+  public pokemonList: Pokemon[] = [];
+  public filteredPokemonList: Pokemon[] = this.pokemonList;
+  public searchString = '';
 
   constructor(private pokemonService: PokemonService) {}
 
