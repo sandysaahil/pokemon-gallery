@@ -10,5 +10,5 @@
   <app-search (change)="search($event)" ngDefaultControl></app-search>  <!--(change)="search($event)"-->
 </div>
 <div *ngIf="filteredPokemonList && filteredPokemonList.length > 0">
-  <app-gallery [pokemonList]="filteredPokemonList" [searchText]="searchString"></app-gallery>
+  <app-gallery [pokemonList]="filteredPokemonList"></app-gallery>
 </div>
