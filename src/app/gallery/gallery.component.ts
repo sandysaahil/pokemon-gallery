@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import {PokemonService} from './pokemon.service';
-import {PaginationService} from '../shared/pagination/pagination.service';
-import {PokemonCard} from './pokemon-card.component';
+import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import {PaginationService} from '../shared/pagination.service';
+import {Pokemon} from '../shared/pokemon';
+import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 
 @Component({
   selector: 'app-gallery',
@@ -10,49 +10,46 @@ import {PokemonCard} from './pokemon-card.component';
 })
 export class GalleryComponent implements OnInit {
 
-  private pokemonCard: any[] = [];
-  private pokemonList: PokemonCard[] = [];
+  private _data = new BehaviorSubject<Pokemon[]>([]);
+  private pokemons: Pokemon[];
 
-  private pager: any = {};
-  private pagedItems: any[];
+  @Input() private searchText: string;
 
-  constructor(private pokemonService: PokemonService, private paginationService: PaginationService) {
-    this.getPokemons();
+  @Input()
+  set pokemonList(value) {
+    this._data.next(value);
   }
 
-  getPokemons() {
-    this.pokemonService.getPokemons()
-      .subscribe(
-        (response) => {
-          this.pokemonCard = response.results;
-          this.pokemonCard.forEach(x=>{
-           this.pokemonList.push(new PokemonCard(x.url, x.name));
-          });
-          this.setPage(1);
-          }, (error) =>  console.log(error)
-        );
-    }
+  get pokemonList() {
+    return this._data.getValue();
+  }
+  private pager: any = {};
+  private pagedItems: Pokemon[];
+
+
+  constructor(private paginationService: PaginationService) {
+  }
 
   trackByFn(index, item) {
     return item.name;
   }
 
   ngOnInit() {
+    this._data
+      .subscribe(x => {
+        this.pokemons = x;
+        this.setPage(1);
+      });
   }
 
   setPage(page: number) {
-    if (page < 1 || page > this.pager.totalPages) {
-      return;
-    }
+        if (page < 1 || page > this.pager.totalPages) {
+          return;
+        }
 
-    // get pager object from service
-    this.pager = this.paginationService.getPager(this.pokemonList.length, page);
-
-    console.log('this.pager ', this.pager);
-
-    // get current page of items
-    this.pagedItems = this.pokemonList.slice(this.pager.startIndex, this.pager.endIndex + 1);
-    console.log('this.pagedItems ', this.pagedItems);
+        if (this.pokemons) {
+          this.pager = this.paginationService.getPager(this.pokemons.length, page);
+          this.pagedItems = this.pokemons.slice(this.pager.startIndex, this.pager.endIndex + 1);
+        }
   }
-
 }

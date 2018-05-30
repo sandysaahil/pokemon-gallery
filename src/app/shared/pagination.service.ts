@@ -1,10 +1,12 @@
 import {Injectable} from '@angular/core';
+import {environment} from '../../environments/environment';
 
 
 @Injectable()
 export class PaginationService {
 
-  getPager(totalItems: number, currentPage: number = 1, pageSize: number = 20) {
+  getPager(totalItems: number, currentPage: number = 1) {
+    const pageSize = environment.pageSize;
     // calculate total pages
     const totalPages = Math.ceil(totalItems / pageSize);
 
@@ -30,20 +32,12 @@ export class PaginationService {
     const startIndex = (currentPage - 1) * pageSize;
     const endIndex = Math.min(startIndex + pageSize - 1, totalItems - 1);
 
-    let arr = [];
-
-    console.log('Start Page is ', startPage);
-
-    for(let counter = startPage; counter < endPage; counter++){
-      arr[counter-1] = counter;
+    const arr = [];
+    for (let counter = startPage; counter < endPage; counter++) {
+      arr[counter - 1] = counter;
     }
 
-    console.log('Array is ', arr);
-
-    let pages = arr;
-
-  //  console.log('pages ', pages);
-
+    const pages = arr;
     return {
       totalItems: totalItems,
       currentPage: currentPage,
@@ -57,5 +51,3 @@ export class PaginationService {
       };
   }
 }
-
-
