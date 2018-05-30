@@ -7,7 +7,7 @@
 </div>
 <spinner></spinner>
 <div class="container">
-<app-search [(ngModel)]="searchString" (change)="search()" ngDefaultControl></app-search>  <!--(change)="search($event)"-->
+  <app-search (change)="search($event)" ngDefaultControl></app-search>  <!--(change)="search($event)"-->
 </div>
 <div *ngIf="filteredPokemonList && filteredPokemonList.length > 0">
   <app-gallery [pokemonList]="filteredPokemonList" [searchText]="searchString"></app-gallery>

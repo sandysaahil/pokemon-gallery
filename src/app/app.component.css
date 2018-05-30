@@ -12,6 +12,7 @@
   text-shadow:2px 2px #333;
   padding: 50px;
   padding-top: 170px;
+  white-space: nowrap;
 }
 
 #header-img {

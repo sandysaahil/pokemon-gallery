@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-12">
     <div class="input-group">
-      <input class="form-control border-secondary py-2" (keyup)="valueChange($event)" placeholder="Enter Pokemon name to search for a Pokemon...">
+      <input class="form-control border-secondary py-2" [(ngModel)]="toFind" (keyup)="valueChange()" placeholder="Enter Pokemon name to search...">
     </div>
   </div>
 </div>

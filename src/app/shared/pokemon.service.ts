@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import {PokemonResponse} from '../shared/pokemon-response';
-import {Constants} from '../shared/constants';
+import {PokemonResponse} from './pokemon-response';
+import {Constants} from './constants';
 
 @Injectable()
 export class PokemonService {

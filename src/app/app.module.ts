@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { GalleryComponent } from './gallery/gallery.component';
-import { PokemonService } from './gallery/pokemon.service';
+import { PokemonService } from './shared/pokemon.service';
 import { HttpClientModule } from '@angular/common/http';
 import { SearchComponent } from './search/search.component';
 import { NgHttpLoaderModule } from 'ng-http-loader';

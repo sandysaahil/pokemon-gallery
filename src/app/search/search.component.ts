@@ -8,18 +8,19 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class SearchComponent implements OnInit {
 
+  public searchString = '';
+  private toFind = '';
+
   @Output()
   change: EventEmitter<string> = new EventEmitter<string>();
-
-  private searchText: string;
 
   constructor() { }
 
   ngOnInit() { }
 
-  valueChange($event) {
-    this.searchText = $event;
-    this.change.emit(this.searchText);
+  valueChange() {
+    console.log('Inside SearchCOmponent event is ', this.toFind);
+    this.searchString = this.toFind;
+    this.change.emit(this.searchString);
   }
-
 }

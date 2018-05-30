@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Spinkit} from 'ng-http-loader';
-import {PokemonService} from './gallery/pokemon.service';
+import {PokemonService} from './shared/pokemon.service';
 import {Pokemon} from './shared/pokemon';
 
 @Component({
@@ -12,7 +12,8 @@ export class AppComponent implements OnInit {
   public spinkit = Spinkit; // used by loading icon.
   public pokemonList: Pokemon[] = [];
   public filteredPokemonList: Pokemon[] = this.pokemonList;
-  public searchString = '';
+
+  private searchText ='';
 
   constructor(private pokemonService: PokemonService) {}
 
@@ -31,9 +32,11 @@ export class AppComponent implements OnInit {
   /**
    * Filters the pokemon list based on the search string.
    */
-  search() {
+  search($event: any) {
+    this.searchText = $event;
+    console.log('in AppComponent - search string is ', event);
     this.filteredPokemonList = this.pokemonList.filter( it => {
-      return it.name.toLowerCase().includes(this.searchString.toLowerCase());
+      return it.name.toLowerCase().includes(this.searchText.toLowerCase());
     });
   }
 }
